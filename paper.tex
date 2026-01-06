@@ -1,0 +1,202 @@
+% Template LaTeX menggunakan forlimits.cls
+\documentclass[final]{forlimits}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Judul Dokumen},
+    pdfpagemode=FullScreen,
+}
+
+%%-----berikut ini diisi oleh redaksi---------------------------------
+% \journalinfo{xx}{x}{Bulan Tahun} {h--h} {http://dx.doi.org/10.12962/limits.v19i1.11060}
+% \kodenaskah{LM-1234XX}
+% \date{\tanggalpengajuan{dd-mm-yyyy}{dd-mm-yyyy}{dd-mm-yyyy}}
+%%-----------------------------------------------------------------
+
+%---- dari sini penulisan naskah Anda dimulai --------------------------
+\title{Dinamika Energi Berbasis Kelembapan pada Lahan Gambut Tropis: Penentuan Analitik Waktu Penyalaan Kritis di Bawah Fluktuasi Curah Hujan}
+
+%nama-nama penulis
+\author[1]{Raihan Putra Akbar*}
+\author[1]{Riza Maulana}
+\author[1]{Khairul Hilmi Muswar}
+\author[2]{Tasmi}
+
+%--afiliasi penulis
+\affil[1]{Program Studi Ilmu Komputer, Fakultas Sains dan Ilmu Komputer, Universitas Pertamina, Jakarta}
+\affil[2]{Prodi. Sains Komputasi, Jurusan Matematika, Universitas Gajah Perkasa, Jogjakarta}
+
+%---email penulis korespondensi
+\correspondingauthor{Raihan P.A.}{raihanp.akbar@gmail.com}
+
+% Mengisi short authors dan short title
+\shortauthors{RP Akbar, R Maulana, KH Muswar, Tasmi} 
+\shorttitle{Penentuan Analitik Waktu Penyalaan Kritis Lahan Gambut}
+
+\begin{document}
+	
+	\maketitle
+	
+	\section{Pendahuluan}	
+    Kebakaran lahan gambut tropis merupakan salah satu tragedi lingkungan yang paling
+    merugikan dan terjadi hampir setiap tahunnya. Asap kebakaran lahan gambut mengandung miliaran emisi karbon yang menyebabkan isu lingkungan dan kesehatan serta mengganggu stabilitas ekonomi. Antisipasi dan mitigasi bencana ini harus dilakukan untuk menghindari bahaya potensial dan meminimalisir kerugian akibat bencana ini. Akan tetapi, pemangku kepentingan dan instansi terkait memerlukan pedoman eksak agar manajemen risiko ini dapat dilakukan secara efektif dan efisien. Tujuan penelitian ini adalah menghasilkan model matematika yang dapat memprediksi titik kritis tersulutnya api di lahan gambut dengan menggali kajian terkait dinamika hidrologi gambut. Model ini bekerja dengan mensimulasikan dinamika penurunan kadar air tanah secara deterministik melalui persamaan diferensial orde satu. Dengan menggunakan solusi analitik, prediksi yang dihasilkan dapat menjadi pedoman utama bagi instansi terkait untuk melakukan manajemen risiko karena solusi ini murah secara komputasi dan cepat hasilnya, mengingat perangkat lapangan yang akan sulit untuk melakukan komputasi yang berat.
+    
+    Lahan gambut tropis merupakan salah satu simpanan karbon dunia terbesar yang
+    ada di daratan. Lahan gambut tropis menyimpan sekitar 50 - 105 giga ton karbon
+    yang setara dengan 15% simpanan karbon dunia. Simpanan karbon ini merupakan
+    hasil dari kumpulan material organik yang dan didukung oleh kondisi tanah yang jenuh akibat gradien hidrolik yang rendah \cite{baird2017}\cite{kurnianto2015}. Kondisi ini menjadikan lahan gambut tropis dapat menjaga dan mengelola keseimbangan air tanah secara alami sehingga lahan gambut tropis merupakan pelindung lingkungan dari banjir dan kemarau. Selain itu, lahan gambut tropis merupakan habitat dari banyakspesies langka yang kehidupannya bergantung pada keunikan dari lahan gambut tropis ini \cite{girkin2022}. Peran lahan gambut tropis sebagai simpanan karbon dunia ini akan berfungsi dengan baik apabila hidrologi tanah gambut tropis dijaga tetap jenuh dan gradien hidroliknya rendah. Hal ini karena keunikan lahan gambut tropis yang minim perubahan kondisi air tanah menjadi kunci untuk menghambat aktivitas mikroorganisme di dalamnya dan
+    menjadi penyangga panas agar simpanan karbon dalam tanah tidak terbakar. Ketika
+    terjadi kemarau panjang karena cuaca ekstrim, pasokan air tanah berkurang drastis sehingga saat suhu meningkat terjadi penyulutan api akibat fungsi air sebagai penyangga panas hilang.
+    
+    Api yang tersulut dapat menyebabkan kebakaran yang tidak terkendali mengingat
+    karakteristik lahan gambut tropis yang sangat kaya akan karbon yang mudah terbakar. kebakaran lahan gambut tropis menghasilkan asap pembakaran yang tinggi karbon sehingga menyebabkan masalah lingkungan dan polusi intens yang mengganggu kesehatan publik bahkan menyebabkan kematian yang berujung pada gangguan stabilitas ekonomi. Ditambah lagi asap dari kebakaran lahan gambut tropis dapat terbang hingga ratusan bahkan ribuan kilometer jauhnya tergantung pola angin dan kondisi atmosfir. Hal ini menyebabkan kebakaran lahan gambut menghasilkan dampak kerugian yang intens dengan cakupan yang sangat luas baik nasional maupun internasional. Contohnya pada kasus kebakaran hutan dan lahan (Karhutla) hebat tahun 2019 yang memusatkan kehancuran di enam provinsi prioritas restorasi gambut, yaitu Riau, Jambi, Sumatera Selatan, Kalimantan Barat, Kalimantan Tengah, dan Kalimantan Selatan. Berdasarkan data Badan Nasional Penanggulangan Bencana (BNPB), peristiwa di wilayah-wilayah tersebut mengakibatkan 919.516 orang menderita Infeksi Saluran Pernapasan Akut (ISPA). Asap pekat menyelimuti wilayah Sumatera dan Kalimantan selama kurang lebih tiga bulan, mulai dari Agustus hingga Oktober. Lebih lanjut, laporan Bank Dunia mencatat bahwa kerugian ekonomi terbesar diderita oleh wilayah-wilayah terdampak tersebut, dengan total kerugian nasional mencapai USD 5,2 miliar atau setara Rp 72,95 triliun.
+    
+    Indonesia memiliki lahan gambut tropis terbesar di dunia yakni seluas 13,4 juta
+    hektar yang merupakan 30\% luas lahan gambut tropis yang ada di dunia. Besarnya luas lahan gambut tropis yang dimiliki Indonesia menjadi motivasi untuk terus meningkatkan dan mengembangkan pengetahuan terkait pelestarian lahan gambut dan pencegahan kebakaran lahan gambut. Akan tetapi, berdasarkan data yang dicatat dari bulan Januari hingga Agustus tahun 2025 terdapat 89.330 hektar yang terkategorisasi sebagai Area Indikatif Terbakar (AIT) (pantaugambut.id). AIT menunjukkan bahwa sebuah lahan sedang atau telah dibakar yang disimpulkan dari citra panas satelit. Tingginya angka AIT ini menunjukkan bahwa masih banyaknya terjadi kebakaran lahan gambut dan rendahnya pengawasan serta pencegahan kebakaran lahan gambut di Indonesia. 
+    
+    Oleh karena itu, penting untuk menyediakan peringatan dini untuk antisipasi terjadinya kebakaran lahan gambut yang dapat dijadikan pedoman bagi instansi terkait untuk menyalurkan manajemen risikonya dengan tepat. Meskipun sudah banyak kajian terkait prediksi kebakaran lahan gambut tropis baik secara spasial ataupun temporal, teknologi yang digunakan misalnya model peatfr yang merupakan model pembelajaran mesin secara stokastik dan dilengkapi dengan metode optimisasi yang menggunakan faktor yang memengaruhi perilaku lahan gambut seperti permukaan air, kelembapan tanah, curah hujan, dan suhu permukaan sebagai parameter \cite{mahdiyasa2022}\cite{mahdiyasa2023}, atau teknologi lain yang menggunakan satelit untuk membuat citra visual seperti heatmap untuk mencari titik panas (hotspot). Teknologi-teknologi ini meskipun canggih dan sering kali memberikan hasil prediksi dan peringatan yang cukup bisa diandalkan, biaya komputasinya cukup berat dan membutuhkan data yang banyak untuk model pembelajaran mesin yang biasanya kurang realistis untuk teknologi lapangan yang umumnya tidak terlalu canggih. Sedangkan heatmap yang digunakan untuk pencarian titik panas dengan menggunakan satelit seringkali terlambat memberikan peringatan dini karena teknik ini mendeteksi peningkatan suhu permukaan yang melewati ambang batas dan
+    tentunya berarti sudah terjadi atau sedang terjadi penyulutan api di lahan gambut tropis.
+    Dengan begitu, penelitian ini bertujuan untuk menghasilkan model matematika yang
+    menggunakan pendekatan deterministik untuk menghitung dinamika hidrologi tanah
+    gambut tropis agar diketahui kapan titik kritis penyulutan api akan terjadi. Model ini menentukan kapan titik kritis penyulutan akan ditembus dengan melihat kadar air tanah, konduktivitas termal tanah gambut tropis, dan radiasi panas dari siklus harian matahari sehingga dapat dihitung kapan kadar air tanah cukup rendah untuk energi yang dihasilkan dari aktivitas biofisika lahan gambut tropis dapat menyulut api dan kemudian terus meningkat hingga menjadi kebakaran yang tidak terkendali. Model ini merupakan solusi analitik sehingga tidak memerlukan biaya komputasi yang mahal dan perhitungannya cepat. Dengan demikian, solusi dari penelitian ini akan menjadi pedoman dan peringatan dini yang sangat baik bagi pemangku kepentingan dan instansi terkait, untuk menyalurkan manajemen risikonya dengan lebih baik dan meminimalisir potensi serta kerugian yang akan dihasilkan dari bencana kebakaran lahan gambut tropis.
+        
+    \section{Metodologi dan Pengembangan Model}
+
+    Penelitian ini menggunakan pendekatan pemodelan deterministik untuk mensimulasikan dinamika penurunan kadar air tanah gambut (\textit{moisture decay}) dan dampaknya terhadap profil energi termodinamika lahan. Model dikembangkan melalui penurunan analitik persamaan diferensial biasa (PDB) dan dikalibrasi menggunakan data lapangan sekunder untuk parameterisasi.
+    
+    \subsection{Formulasi Matematis Dinamika Kelembapan}
+    
+    Laju pengeringan tanah gambut diasumsikan mengikuti kinetika orde satu (\textit{first-order kinetics}), di mana laju kehilangan air berbanding lurus dengan ketersediaan air dalam matriks tanah pada waktu $t$. Persamaan diferensial dasar yang digunakan adalah:
+    
+    \begin{equation}
+        \frac{dM(t)}{dt} = \begin{cases}
+        -K(t) \cdot M(t) & \text{jika }  W = 0 \\
+        M(t) + R_{in} & \text{jika } W = 1
+        \end{cases}
+        \label{eq:Moisture}
+    \end{equation}
+    
+    Dimana:
+    \begin{itemize}
+        \item $M$: Kadar kelembapan air tanah.
+        \item $K$: Laju pengeringan air tanah.
+        \item $R_{in}$: Kenaikan  kadar air tanah akibat hujan.
+    \end{itemize}
+    
+    \subsection{Penurunan Solusi Analitik (\textit{Analytical Derivation})}
+    
+    Substitusi Persamaan (\ref{eq:k_dynamic}) ke dalam Persamaan (\ref{eq:base_ode}) menghasilkan persamaan diferensial non-otonom. Untuk mendapatkan solusi eksak yang memenuhi kondisi awal $M(0) = M_0$, dilakukan integrasi tentu pada kedua ruas dari $t=0$ hingga waktu $t$:
+    
+    \begin{equation}
+        \int_{M_0}^{M(t)} \frac{1}{M} dM = - \int_{0}^{t} \left( k_{base} + k_{solar} \sin^2(\pi \tau) \right) d\tau
+    \end{equation}
+    
+    Menggunakan identitas trigonometri $\sin^2(\theta) = \frac{1 - \cos(2\theta)}{2}$, proses integrasi dijabarkan sebagai berikut:
+    
+    \begin{equation}
+        \ln\left(\frac{M(t)}{M_0}\right) = - \left[ \left(k_{base} + \frac{k_{solar}}{2}\right)\tau - \frac{k_{solar}}{4\pi}\sin(2\pi \tau) \right]_0^t
+    \end{equation}
+    
+    Dengan melakukan eksponensiasi pada kedua ruas, diperoleh solusi analitik tertutup (\textit{closed-form solution}) untuk dinamika kadar air gambut:
+    
+    \begin{equation}
+        M(t) = M_0 \cdot \exp\left( - \left( k_{base} + 0.5 k_{solar} \right)t + \frac{k_{solar}}{4\pi} \sin(2\pi t) \right)
+        \label{eq:final_model}
+    \end{equation}
+    
+    Persamaan (\ref{eq:final_model}) memungkinkan prediksi kadar air secara instan pada waktu $t$ tanpa memerlukan iterasi numerik.
+    
+    \subsection{Model Energi dan Titik Kritis}
+    
+    Risiko kebakaran dikuantifikasi dengan menghitung Nilai Kalor Bersih (\textit{Net Calorific Value}, $E_{net}$) dari gambut. Titik kritis didefinisikan sebagai kondisi termodinamika di mana energi yang dibutuhkan untuk menguapkan air setara dengan energi potensial pembakaran biomassa ($E_{net} = 0$) \cite{frandsen1997}.
+    
+    \begin{equation}
+        E_{net}(t) = CV_{dry} - \left( L_v \cdot M(t) \right)
+    \end{equation}
+    
+    Dimana $CV_{dry}$ adalah nilai kalor gambut kering ($\approx 20$ MJ/kg) dan $L_v$ adalah kalor laten penguapan air ($2.26$ MJ/kg). Waktu kritis ($t_{crit}$) tercapai saat $E_{net}(t) > 0$.
+    
+    \subsection{Strategi Kalibrasi Parameter}
+    
+    Parameter model ($k_{base}$ dan $k_{solar}$) dikalibrasi menggunakan data sekunder dari studi eksperimental Azizi et al. (2020) \cite{azizi2020} mengenai analisis kadar air per lapisan tanah gambut di Desa Tanjung Leban, Riau.
+    
+    Berdasarkan analisis data historis, profil kadar air tanah menunjukkan fluktuasi signifikan akibat kejadian hujan. Karena model yang dikembangkan bertujuan untuk memprediksi \textit{worst-case scenario} (skenario kemarau ekstrem tanpa hujan), kalibrasi tidak dilakukan pada seluruh deret waktu. Kami menerapkan strategi \textit{Data Slicing}, di mana hanya segmen data yang menunjukkan tren penurunan kadar air (\textit{drying phase}) yang digunakan untuk \textit{tuning}. Data yang dipilih adalah kadar air pada \textbf{Lapisan Tanah Organik} pada tanggal \textbf{28 Juli hingga 30 Juli 2019} (Tabel \ref{tab:data_azizi}).
+    
+    \begin{table}[h]
+    \centering
+    \caption{Sampel Data Fase Pengeringan untuk Kalibrasi Model (Sumber: Azizi et al., 2020)}
+    \begin{tabular}{ccc}
+    \toprule
+    \textbf{Tanggal} & \textbf{Hari ke- ($t$)} & \textbf{Kadar Air (\%)} \\ 
+    \midrule
+    28 Juli 2019 & 0 & 81.68 \\ 
+    29 Juli 2019 & 1 & 68.92 \\ 
+    30 Juli 2019 & 2 & 41.16 \\ 
+    \bottomrule
+    \end{tabular}
+    \label{tab:data_azizi}
+    \end{table}
+    
+    Estimasi nilai parameter optimal dilakukan menggunakan metode regresi non-linier \textit{Least Squares} pada lingkungan pemrograman Python. Program dapat diakses melalui link berikut \href{https://colab.research.google.com/drive/1adEI4B17h1GQ9DN5N92V5GTiC-dK6Gsh?usp=sharing}{Program Parameter Tuning}.
+    
+    \subsection{Hasil Kalibrasi Parameter (\textit{Parameter Tuning Result})}
+    
+    Proses kalibrasi model analitik terhadap data observasi lapangan menghasilkan parameter optimal yang mampu merepresentasikan perilaku pengeringan lahan gambut dengan presisi tinggi.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.95\linewidth]{hasiltuning.png}
+        \caption{Hasil kalibrasi model analitik (garis biru) terhadap data observasi fase pengeringan Azizi et al. (2020) (titik merah). Garis putus-putus menunjukkan ambang batas kritis energi.}
+        \label{fig:hasil_tuning}
+    \end{figure}
+    
+    Seperti terlihat pada Gambar \ref{fig:hasil_tuning}, model analitik berhasil mengikuti tren penurunan kadar air yang cepat pada fase pengeringan. Osilasi kecil pada kurva prediksi menunjukkan sensitivitas model terhadap siklus diurnal matahari. Hasil ekstrapolasi menunjukkan bahwa jika kondisi tanpa hujan berlanjut, kadar air diprediksi akan menembus ambang batas kritis pada \textbf{Hari ke-3.5}. Temuan ini mengindikasikan validitas model dalam memprediksi jendela waktu respon (\textit{response window}) sebelum lahan gambut mencapai kondisi mudah terbakar.
+    
+%---Daftar Pustaka
+\begin{thebibliography}{99}
+	
+	\bibitem{baird2017}
+    A. J. Baird, R. Low, D. Young, G. T. Swindles, O. R. Lopez, dan S. Page.
+    ``High permeability explains the vulnerability of the carbon store in drained tropical peatlands,''
+    \textit{Geophysical Research Letters}, vol. 44, no. 3, hlm. 1333--1339, 2017. 
+    DOI: \href{https://doi.org/10.1002/2016GL072245}{10.1002/2016GL072245}
+
+    \bibitem{kurnianto2015}
+     Kurnianto, S., Warren, M., Talbot, J., Kauffman, B., Murdiyarso, D., Frolking, S.
+    ``Carbon accumulation of tropical peatlands over millennia: A modeling approach,''
+    \textit{Global Change Biology}, vol. 21, no. 1, hlm. 431-444, 2015.
+   , 2015. DOI: \href{https://doi.org/10.1111/gcb.12672}{10.1111/gcb.12672}
+    
+    \bibitem{girkin2022}
+    N. T. Girkin, H. V. Cooper, M. J. Ledger, P. O’Reilly, S. A. Thornton, C. M. {\AA}kesson, L. E. S. Cole, K. A. Hapsari, D. Hawthorne, dan K. H. Roucoux.
+    ``Tropical peatlands in the Anthropocene: The present and the future,''
+    \textit{Anthropocene}, vol. 40, no. art. 100354, 2022.
+    DOI: \href{https://doi.org/10.1016/j.ancene.2022.100354}{10.1016/j.ancene.2022.100354}
+
+    \bibitem{mahdiyasa2022}
+    Mahdiyasa, A.W., Large, D.J., Muljadi, B.P., Icardi, M., Triantafyllou, S.
+    ``MPeat—A fully coupled mechanical-ecohydrological model of peatland development,''
+    \textit{Ecohydrology}, vol. 15, no. 1 2023.
+    DOI: \href{https://doi.org/10.1002/eco.2361}{10.1002/eco.2361}
+
+    \bibitem{mahdiyasa2023}
+    Mahdiyasa, A.W., Large, D.J., Muljadi, B.P., Icardi, M.
+    ``Modelling the influence of mechanical-ecohydrological feedback on the nonlinear dynamics of peatlands,''
+    \textit{Ecological Modelling}, vol. 478, art. 110299, 2023.
+    DOI: \href{https://doi.org/10.1016/j.ecolmodel.2023.110299}{10.1016/j.ecolmodel.2023.110299}
+    
+    \bibitem{azizi2020}
+    M. Azizi, A. Sandhyavitri, dan M. Yusa.
+    ``Analisis Kadar Air Perlapisan Tanah Di Lahan Gambut Untuk Menentukan Fire Danger Rating System (FDRS),''
+    \textit{Jom FTEKNIK}, vol. 7, 2020.
+
+\end{thebibliography}
+	
+\end{document}
