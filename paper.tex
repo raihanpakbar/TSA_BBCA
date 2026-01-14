@@ -4,28 +4,26 @@
 %%-----berikut ini diisi oleh redaksi---------------------------------
 \journalinfo{xx}{x}{Bulan Tahun} {h--h} {http://dx.doi.org/10.12962/limits.v19i1.11060}
 \kodenaskah{LM-1234XX}
-\date{\tanggalpengajuan{dd-mm-yyyy}{dd-mm-yyyy}{dd-mm-yyyy}}
+
+% \date{\tanggalpengajuan{15-01-2005}{dd-mm-yyyy}{dd-mm-yyyy}}
 %%-----------------------------------------------------------------
 
 %---- dari sini penulisan naskah Anda dimulai --------------------------
-\title{Petunjuk Penggunaan dwawawd Kelas LaTeX untuk Menulis Artikel pada Jurnal Limits dengan Berbagai Pilihan Format}
+\title{JUDUL}
 
 %nama-nama penulis, tambahkan tanda * di belakang nama penulis korespondensi (tanpa spasi) 
-\author[1]{Amat Cendekia}
-\author[2]{Bahagia Sentosa Raja*}
-\author[3]{Cekatan Gajah Perkasa}
-\author[2]{Dermawan~Kayaraya}
+\author[1]{Raihan Putra Akbar}
+\author[2]{Gerald Eberhard}
+\author[3]{Muhammad Irfan Wira Kusuma}
 
 %--afiliasi penulis
-\affil[1]{Departemen Matematika, Institut Teknologi Sepuluh Nopember, Surabaya}
-\affil[2]{Prodi. Sains Komputasi, Jurusan Matematika, Universitas Gajah Perkasa, Jogjakarta}
-\affil[3]{Prodi. Komputasi Statistika, Departemen Matematika, Universitas Permata Cendekia, Bali}
+\affil[1,2,3]{Program Studi Ilmu Komputer, Fakultas Sains dan Ilmu Komputer, Universitas Pertamina, Jakarta}
 
 %---email hanya diisi untuk penulis korespondensi (corresponding author)
-\correspondingauthor{Bahagia S.R.}{bahagia@contoh.its.ac.id}
+\correspondingauthor{Raihan P.A.}{105223001@student.universitaspertamina.ac.id}
 
 % Mengisi short authors dan short title secara manual
-\shortauthors{A Cendekia, BS Raja, CG Perkasa, D Kayaraya} % Nama pendek untuk header
+\shortauthors{RP Akbar, G Eberhard, MIW Kusuma} % Nama pendek untuk header
 \shorttitle{Petunjuk Menulis Artikel untuk Jurnal Limits} % Judul pendek untuk header
 
 \begin{document}
@@ -45,7 +43,17 @@
 
 	
 	\section{Pendahuluan}
-	Isi pendahuluan dapat terdiri dari latar belakang dan motivasi penelitian. Selain itu, dapat juga diisi dengan teori pendukung yang digunakan dalam pembahasan. 
+	Pergerakan harga saham merupakan cerminan harapan pasar terhadap kondisi ekonomi dan penilaian terhadap prospek kinerja perusahaan(REF). Dalam konteks perekonomian nasional, indeks dan saham sektor perbankan sering dipandang sebagai indikator kesehatan sistem keuangan karena peran bank sebagai perantara utama dalam penyaluran modal dan likuiditas (REF). Perbankan memegang posisi strategis dalam struktur ekonomi sehingga fluktuasi yang signifikan pada saham-saham perbankan dapat berdampak pada  risiko keuangan, likuiditas pasar, dan kebijakan pemerintah. Untuk itu, analisis terhadap saham-saham perbankan besar memberi wawasan yang penting bagi pemangku kebijakan yang membutuhkan sinyal-sinyal awal gangguan di sektor keuangan.
+
+	Dalam studi ini, fokus pembahasan ditujukan pada tiga saham perbankan terbesar di Indonesia, yaitu BBCA (Bank BCA), BBRI (Bank BRI), dan BMRI (Bank Mandiri). Saham-saham ini dipilih karena sebagai top 3 terbesar \textit{market capitalization} dalam situs IDX pada tahun 2025 (REF). Hal ini diasumsikan sebagai indikator kapitalisasi pasar dan likuiditas yang menjadi representatif untuk analisis perilaku perbankan. Pemilihan saham-saham ini bertujuan untuk melakukan kajian komparatif terhadap penurunan harga yang disebabkan oleh faktor makro atau bersifat internal yang terjadi pada masing-masing perusahaan. Penelitian ini mencoba melihat pola umum yang mungkin muncul dari dinamika permintaan-penawaran, volatilitas pasar, dan arus modal asing yang masuk atau keluar dari saham-saham perbankan tersebut.
+
+	Analisis penyebab penurunan harga saham merupakan tantangan tersendiri karena penurunan dapat berasal dari faktor internal, seperti perubahan manajemen atau masalah tata kelola, maupun faktor eksternal, seperti kondisi makroekonomi atau perubahan regulasi. Pendekatan yang digunakan adalah penggunaan data historis dan teknik analisis \textit{time-series} sehingga memungkinkan pemisahan komponen perubahan harga  sehingga dapat memberikan indikator apakah perubahan bersifat sektoral atau bersifat individual. Oleh karena itu, fokus penelitian diarahkan pada analisis historis dan deskriptif.
+
+	Analisis \textit{time-series} memungkinkan analisis tren jangka panjang melalui teknik \textit{smoothing} seperti \textit{moving averages}, deteksi musim (\textit{seasonality}), dan pengukuran volatilitas melalui perhitungan return harian. Selain itu, indikator teknis seperti \textit{Relative Strength Index} (RSI) dipakai sebagai fitur tambahan untuk menentukan kondisi \textit{overbought/oversold} yang membantu interpretasi pola pergerakan harga.
+
+	Sebagai langkah awal, \textit{Exploratory Data Analysis} (EDA) digunakan untuk memahami distribusi variabel, mendeteksi outlier, membuat ringkasan statistik, dan mengungkap pola yang tersirat. Dalam penelitian ini, alur yang digunakan meliputi \textit{preprocessing} data dengan konversi waktu dan penanganan \textit{missing value}. Lalu pembuatan fitur, seperti SMA, RSI, \textit{daily return}, dan \textit{moving average volume} untuk masing-masing saham. Selanjutnya, dilakukan visualisasi untuk membandingkan harga dan arus modal, serta dekomposisi \textit{time-series} untuk memisahkan komponen \textit{trend}, \textit{seasonality}, dan \textit{residual}. Langkah-langkah tersebut dilakukan untuk dapat diinterpretasikan menjadi dasar analisis penurunan harga yang bersifat sektoral atau bersifat individual.
+
+	Penelitian ini bersifat eksploratif dan deskriptif dengan tujuan utama menyajikan analisis komparatif mengenai saham BBCA, BBRI, dan BMRI sehingga memberikan \textit{insight} awal bagi analisis risiko sektoral. Kontribusi praktis penelitian meliputi rangkaian prosedur EDA yang dapat direplikasi untuk saham lain untuk memahami hubungan antara harga, volatilitas, volume, dan aliran modal asing.
 	
 	\subsection{Beberapa Contoh}
 	\paragraph{Menulis teorema dan buktinya.}~ 
