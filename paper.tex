@@ -1,5 +1,17 @@
 % Template LaTeX menggunakan forlimits.cls
 \documentclass[final]{forlimits}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx} % Untuk tabel yang lebarnya bisa disesuaikan
+\usepackage{multirow} % Untuk menggabungkan baris
+\usepackage{booktabs} % Untuk garis tabel yang lebih bagus
+
 
 %%-----berikut ini diisi oleh redaksi---------------------------------
 \journalinfo{xx}{x}{Bulan Tahun} {h--h} {http://dx.doi.org/10.12962/limits.v19i1.11060}
@@ -54,6 +66,57 @@
 	Sebagai langkah awal, \textit{Exploratory Data Analysis} (EDA) digunakan untuk memahami distribusi variabel, mendeteksi outlier, membuat ringkasan statistik, dan mengungkap pola yang tersirat. Dalam penelitian ini, alur yang digunakan meliputi \textit{preprocessing} data dengan konversi waktu dan penanganan \textit{missing value}. Lalu pembuatan fitur, seperti SMA, RSI, \textit{daily return}, dan \textit{moving average volume} untuk masing-masing saham. Selanjutnya, dilakukan visualisasi untuk membandingkan harga dan arus modal, serta dekomposisi \textit{time-series} untuk memisahkan komponen \textit{trend}, \textit{seasonality}, dan \textit{residual}. Langkah-langkah tersebut dilakukan untuk dapat diinterpretasikan menjadi dasar analisis penurunan harga yang bersifat sektoral atau bersifat individual.
 
 	Penelitian ini bersifat eksploratif dan deskriptif dengan tujuan utama menyajikan analisis komparatif mengenai saham BBCA, BBRI, dan BMRI sehingga memberikan \textit{insight} awal bagi analisis risiko sektoral. Kontribusi praktis penelitian meliputi rangkaian prosedur EDA yang dapat direplikasi untuk saham lain untuk memahami hubungan antara harga, volatilitas, volume, dan aliran modal asing.
+
+	\section{Dataset dan Metodologi}
+
+	\subsection{Deskripsi Dataset}
+
+	Dataset yang digunakan dalam penelitian ini merupakan data historis perdagangan saham di Bursa Efek Indonesia (BEI) dengan fokus pada tiga emiten utama, yaitu Bank Central Asia Tbk. (BBCA), Bank Rakyat Indonesia Tbk. (BBRI), dan Bank Mandiri Tbk. (BMRI). Dataset diperoleh dengan mengakses \textit{website} IDX dan mengambil data json yang kemudian diolah menjadi format XLSX untuk memudahkan analisis dan proses data (REF MANUAL BOOK).
+	
+	Data yang diambil bersifat harian dan mencakup informasi harga, volume perdagangan, serta aktivitas transaksi investor asing. Pemilihan data harian bertujuan untuk menangkap dinamika pasar secara lebih granular, termasuk fluktuasi jangka pendek, volatilitas, serta respon pasar terhadap perubahan sentimen. Periode waktu yang dicakup dalam dataset ini adalah dari tanggal 8 November 2021 hingga 6 Januari 2026, sehingga mencakup lebih dari empat tahun data historis yang memungkinkan analisis tren jangka panjang serta pola musiman.
+
+	\begin{figure}[H]
+        \centering
+        \includegraphics[width=1.0\textwidth]{img/ContohPreviewData.png}         
+		\caption{Preview Dataset Saham Perbankan}
+        \label{fig:Preview Dataset Saham Perbankan}
+    \end{figure}
+
+	Berdasarkan Gambar \ref{fig:Preview Dataset Saham Perbankan}, dataset memuat berbagai atribut yang berkaitan dengan aktivitas perdagangan saham, mulai dari identitas emiten, informasi harga, volume transaksi, hingga data penawaran (\textit{bid-offer}) dan transaksi non-reguler. Namun, tidak seluruh kolom digunakan dalam analisis ini. Penelitian ini menitikberatkan pada kolom-kolom yang secara langsung merepresentasikan pergerakan harga, likuiditas pasar, dan arus modal asing.  Variabel-variabel tersebut relevan untuk analisis time-series dan eksplorasi pola pergerakan saham.
+
+	Deskripsi singkat mengenai kolom-kolom utama yang digunakan dalam penelitian ini disajikan pada Tabel \ref{tab:deskripsi_kolom} berikut
+	\begin{table}[H]
+		\centering
+		\caption{Deskripsi Kolom Dataset Saham}
+		\label{tab:deskripsi_kolom}
+		\renewcommand{\arraystretch}{1.2}
+		\begin{tabularx}{\textwidth}{|>{\hsize=.3\hsize}X|>{\hsize=.2\hsize}X|>{\hsize=.5\hsize}X|} 
+			\hline
+			\textbf{Kategori} & \textbf{Nama Kolom} & \textbf{Deskripsi} \\
+			\hline
+			\multirow{3}{=}{Informasi waktu dan identitas saham} 
+			& \texttt{Date} & Tanggal perdagangan, digunakan sebagai indeks time-series \\ \cline{2-3}
+			& \texttt{StockCode} & Kode saham (BBCA, BBRI, BMRI) \\ \cline{2-3}
+			& \texttt{StockName} & Nama emiten \\ \hline
+			
+			\multirow{6}{=}{Informasi harga saham}
+			& \texttt{OpenPrice} & Harga pembukaan \\ \cline{2-3}
+			& \texttt{High} & Harga tertinggi harian \\ \cline{2-3}
+			& \texttt{Low} & Harga terendah harian \\ \cline{2-3}
+			& \texttt{Close} & Harga penutupan \\ \cline{2-3}
+			& \texttt{Previous} & Harga penutupan hari sebelumnya \\ \cline{2-3}
+			& \texttt{Change} & Perubahan harga penutupan harian \\ \hline
+			
+			\multirow{3}{=}{Informasi aktivitas perdagangan} 
+			& \texttt{Volume} & Jumlah saham yang diperdagangkan \\ \cline{2-3}
+			& \texttt{Value} & Nilai transaksi perdagangan \\ \cline{2-3}
+			& \texttt{Frequency} & Frekuensi transaksi \\ \hline
+			
+			\multirow{2}{=}{Informasi arus modal asing} 
+			& \texttt{ForeignBuy} & Volume pembelian oleh investor asing \\ \cline{2-3}
+			& \texttt{ForeignSell} & Volume penjualan oleh investor asing \\ \hline
+		\end{tabularx}
+	\end{table}
 	
 	\subsection{Beberapa Contoh}
 	\paragraph{Menulis teorema dan buktinya.}~ 
